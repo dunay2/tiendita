@@ -5,7 +5,6 @@
  */
 package Utils.Menu;
 
-import Utils.MenuStruct;
 import java.util.ArrayList;
 
 /**
@@ -92,7 +91,7 @@ public class MenuClient extends MenuBase {
 //InputMenu
         // mnuDeleteClient  
         ArrayList<MenuStruct> entries = new ArrayList();
-        entries.add(new MenuStruct("", "Introduzca DNI del cliente"));
+        entries.add(new MenuStruct("output", "Introduzca DNI del cliente"));
      
         return entries;
     }
