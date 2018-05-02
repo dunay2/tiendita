@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package item.family.computers;
+package item.family.Image;
 
 /**
  *
  * @author ashh412
  */
-public class Labtop extends BateryComputer{
+public class Led {
     
-    public Labtop(String code) {
-        super(code);
-    }
-    
-
 }

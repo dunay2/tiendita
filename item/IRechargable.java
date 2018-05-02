@@ -3,17 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package item.family.computers;
+package item;
 
 /**
  *
  * @author ashh412
  */
-public class Labtop extends BateryComputer{
+public interface IRechargable {
     
-    public Labtop(String code) {
-        super(code);
-    }
+    /**
+     *
+     * @param e
+     */
+    void setAutonomy (String e);
+    String getAutonomy ();
     
-
+    
+    
 }

@@ -3,17 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package item.family.computers;
+package item.components;
+
+import item.Electrodomestic;
+
+
 
 /**
  *
  * @author ashh412
  */
-public class Labtop extends BateryComputer{
-    
-    public Labtop(String code) {
-        super(code);
-    }
-    
-
-}

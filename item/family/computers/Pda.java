@@ -5,18 +5,27 @@
  */
 package item.family.computers;
 
-import item.components.Computer;
-
 /**
  *
  * @author ashh412
  */
-public class Pda extends Computer{
-    
-    public Pda(String code, String familyCode, String name, String description, double boughtPrice, double sellPrice, int quantity, Double ram) {
-        super(code, familyCode, name, description, boughtPrice, sellPrice, quantity, ram);
-    }
-    
+public class Pda extends BateryComputer {
 
+    public Pda(String code) {
+        super(code);
+    }
+
+    private String inches; //autonomia
+    //Alimentación powersuply electrical network/bateri
+
+    public String getInches() {
+        return inches;
+    }
+
+    public void setInches(String inches) {
+        this.inches = inches;
+    }
+
+ 
 
 }
