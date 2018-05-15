@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package item.Factory.Computer.Components;
+package Item.Factory.Computer.Components;
 
 import Item.Family.Computers.Computer;
 import java.util.ArrayList;
@@ -33,4 +33,4 @@ public class IniProcesor extends Computer {
         super.setSellPrice(Double.valueOf(response.get(i++)));
         super.setQuantity(Integer.valueOf(response.get(i++)));        
     }
-}
+} 

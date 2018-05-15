@@ -7,7 +7,7 @@ package Samples;
 
 import Managers.EmployeeManager;
 import Managers.SaleManager;
-import item.family.computers.Components.*;
+import Item.Family.Computers.Components.*;
 import Managers.StockManager;
 import Managers.ClientManager;
 import Managers.HndInvoice;

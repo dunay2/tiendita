@@ -6,9 +6,18 @@
 package Item.Factory;
 
 import Item.Electrodomestic;
-import Item.Factory.Computer.Components.*;
-import Item.Factory.Computer.Computers.*;
+import Item.Factory.Computer.Components.IniKeyboard;
+import Item.Factory.Computer.Components.IniMouse;
+import Item.Factory.Computer.Components.IniPrinter;
+import Item.Factory.Computer.Components.IniMemory;
+import Item.Factory.Computer.Components.IniProcesor;
+import Item.Factory.Computer.Computers.IniLabtop;
+//import Item.Factory.Computer.Components.*;
+//import Item.Factory.Computer.Computers.*;
 import Item.Factory.Home.*;
+import Item.Factory.Computer.Computers.IniDesktop;
+import Item.Factory.Computer.Computers.IniNoteBook;
+import Item.Factory.Computer.Computers.IniPda;
 import java.util.ArrayList;
 
 /**
@@ -47,7 +56,7 @@ public class ItemFactory {
                     return new IniPrinter(key, responseValues);
 
                 case 31115:
-                    return new IniProcesor(key, responseValues);
+                    return new IniProcesor (key, responseValues);
                 case 31121:
                     return new IniPda(key, responseValues);
                 case 31122:

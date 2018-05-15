@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package item.Factory.Home;
+package Item.Factory.Home;
 
 import Item.Family.Home.WashingMachine;
 import java.util.ArrayList;
