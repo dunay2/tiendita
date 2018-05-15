@@ -81,7 +81,7 @@ public class MainManager {
         saleManager.load();
         repairManager.load();
         financeManager.load();
-        offerManager.load("Offer");
+        offerManager.load();
 
         //  this.saleManager = new SaleManager(cashier, clientManager, stockManager);
         doBusiness(myTextInterface.printMenu(null));

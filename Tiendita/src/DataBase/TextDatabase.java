@@ -20,10 +20,12 @@ import Person.Employee.Employee;
 import Utils.Record.Repair;
 import Utils.Record.Sale;
 import Item.Electrodomestic;
+import Utils.Offer;
 
 /**
  *
- * @author ashh412 Propósito: agregar persistencia al proyecto mediante acceso a
+ * @author ashh412 
+ * Propósito: agregar persistencia al proyecto mediante acceso a
  * un fichero de texto donde se guardan los objetos serializados
  */
 public class TextDatabase implements IDatabase {
@@ -105,6 +107,10 @@ public class TextDatabase implements IDatabase {
 //                case "Credit":
 //                    hmfile = (HashMap<String, Credit>) hm;
 //                    break;
+                case "Offer":
+                    hmfile = (HashMap<String, Offer>) hm;
+                    break;
+
             }
 
             filename = filename.concat(".data");

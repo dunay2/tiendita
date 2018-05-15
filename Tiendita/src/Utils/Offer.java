@@ -2,6 +2,8 @@ package Utils;
 
 import Person.Client.Client;
 import Person.Comunications.ICommunication;
+import Person.Person;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -11,41 +13,12 @@ import java.util.Iterator;
  *
  * @author ashh412
  */
-public class Offer implements ICommunication {
+public class Offer implements ICommunication, Serializable {
 
-    private String offerId;
-    private String offerDesc;
-    private final HashMap hmClients;
+    private final String offerId;
+    private final String offerDesc;
+    private final HashMap<String, Client> hmClients;
     private Date sendDate;
-
-    /**
-     * Clase privada que controla cuándo se ha enviado el dato del cliente
-     */
-    private class ClientRecord extends Client {//Estructura privada que contiene el envío a los clientes
-
-        private Date sendDate;
-
-        public ClientRecord(String dni) {
-            super(dni);
-        }
-
-        public Date getSendDate() {
-            return this.sendDate;
-        }
-
-        public void setSendDate(Date sendDate) {
-            this.sendDate = sendDate;
-        }
-
-    }
-
-    public Offer(String offerId, String offerDesc) {
-        this.hmClients = new HashMap();
-        
-        this.offerId= offerId;
-        this.offerDesc= offerDesc;
-        
-    }
 
     /**
      *
@@ -55,7 +28,15 @@ public class Offer implements ICommunication {
     @Override
     public void addClient(String clientId, Client client) {
 
-        hmClients.put(clientId, (ClientRecord) client);
+        hmClients.put(clientId, client);
+    }
+
+    public Offer(String offerId, String offerDesc) {
+        this.hmClients = new HashMap();
+
+        this.offerId = offerId;
+        this.offerDesc = offerDesc;
+
     }
 
     /**
@@ -86,18 +67,15 @@ public class Offer implements ICommunication {
     }
 
     /**
-     *
+     * Propósito: Enviar correo
      */
     @Override
     public void sendMail() {
 
-        Iterator it = hmClients.entrySet().iterator();
-        while (it.hasNext()) {
-            ClientRecord clientRecord = (ClientRecord) it.next();
-
-            sendMail(clientRecord);
-
-        }
+        hmClients.forEach((code, client) -> {
+            System.out.println("Código: " + code + " Descripción: " + client.getFirstName());
+            sendMail(client);
+        });
 
         Calendar rightNow = Calendar.getInstance();
 
@@ -108,17 +86,17 @@ public class Offer implements ICommunication {
      *
      * @param clientRecord
      */
-    private void sendMail(ClientRecord clientRecord) {
+    private void sendMail(Client client) {
 
         //Comprobamos las condiciones de envío
-        if (checkSendMailConditions(clientRecord.getSendDate())) {
-            System.out.println("Correo enviado a " + clientRecord.getEmail());
+        if (checkSendMailConditions(client.getSendDate())) {
+            System.out.println("Correo enviado a " + client.getEmail());
 
-            System.out.println("Estimado/a Señor/a " + clientRecord.getLastName() + offerDesc);
+            System.out.println("Estimado/a Señor/a " + client.getLastName() + offerDesc);
 
             //Guardamos la fecha de envío
             Calendar rightNow = Calendar.getInstance();
-            clientRecord.setSendDate(rightNow.getTime());
+            client.setSendDate(rightNow.getTime());
         }
 
     }
@@ -151,17 +129,8 @@ public class Offer implements ICommunication {
 
     public void printClients() {
 
-        Iterator it = hmClients.entrySet().iterator();
-        while (it.hasNext()) {
-            ClientRecord clientRecord = (ClientRecord) it.next();
+        hmClients.forEach((code, clientRecord) -> System.out.println("Código: " + code + " Descripción: " + clientRecord.getFirstName()));
 
-            String OutputString = clientRecord.getDni() + "  ";
-            OutputString += clientRecord.getFirstName() + "  ";
-            OutputString += clientRecord.getEmail() + "  ";
-            OutputString += clientRecord.getSendDate() + "  ";
-
-            System.out.println(OutputString);
-
-        }
     }
+
 }

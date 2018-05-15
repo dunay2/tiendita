@@ -17,8 +17,8 @@ public class ElectronicShop extends Shop {
     public static void main(String[] args) {
 
         AddTest.addTestEmployees();
-//        AddTest.addTestComponents();
-        //   AddTest.addTestSale();
+        AddTest.addTestComponents();
+          AddTest.addTestSale();
         // AddTest.testRepair();
         //  AddTest.testChangeOrderStatus();
         // AddTest.printOrders("");

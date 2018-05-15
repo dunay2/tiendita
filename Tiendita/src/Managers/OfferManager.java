@@ -15,20 +15,21 @@ import java.util.HashMap;
  */
 public class OfferManager extends TextDatabase {
 
-    private HashMap<String, Offer> Offers;
+    private HashMap<String, Offer> offers;
 
     private static OfferManager instance = null;    //Singleton  Pattern
 
     private SalesMan salesMan;
     private final ClientManager clientManager;
 
-    //Singleton Singleton Pattern
     /**
+     * Singleton Singleton Pattern
      *
      *
      * @param clientManager
      */
     protected OfferManager(ClientManager clientManager) {
+        this.offers = new HashMap();
         this.clientManager = clientManager;
     }
 
@@ -46,61 +47,54 @@ public class OfferManager extends TextDatabase {
 
         switch (node.getValue()) {
             case 71:    //Crear una promocion 
-                //Codigo promo
-                //desc
 
                 if (createObject(enode) != null) {
                     return true;
                 }
-                enode[0] = node.getChildNodes().get(0);
-
-                list();
-
-                //  listRepairHistory(curRepair);
-                TextInterface.pressKey();
-
                 return true;
 
-            case 72: //        entries.add(new MenuStruct("mnuLisgPromo", "Listar las promociones"));
+            case 72: //  Listar las promociones
                 list();
-            case 73: //        entries.add(new MenuStruct("mnuListPromoCli", "Listar los clientes de una promocion"));
-                String promo = "";
-                listClient(promo);
+                TextInterface.pressKey();
+                return true;
 
-            case 74://        entries.add(new MenuStruct("mnuAddPromoCli", "Agregrar cliente a promocion"));
-                //Codigo promocion
-                //Codigo cliente
+            case 73: // Listar los clientes de una promocion
 
-                Client client = (Client) clientManager.search(node, outString);
+                listClient(enode);
+                TextInterface.pressKey();
+                return true;
 
-                offer = search(node, outString);
-                offer.addClient(client.getDni(), client);
-                save(Offers);
+            case 74://Agregrar cliente a promocion
 
-            case 75: //     entries.add(new MenuStruct("mnuPromoSend", "Enviar correo a listado"));
+                addClientToPromo(enode);
+
+                TextInterface.pressKey();
+                return true;
+
+            case 75: // Enviar correo a listado"));
                 //codigo promo
                 //Obtenerla del hm y enviar
 
-                offer = search(node, outString);
-                offer.sendMail();
+                sendMail(enode);
 
-            case 76: //Volver al Menú Principal
+                TextInterface.pressKey();
                 return true;
 
+            case 76: //Volver al Menú Principal
+                return false;
+
         }
-        return false;//Profundiza
+        return false;
     }
 
     public void list() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    public void print(Offer e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        offers.forEach((code, offer) -> System.out.println("Código: " + code + " Descripción: " + offer.getOfferDesc()));
+
     }
 
     public boolean add(Offer e) {
-        Offers.put(e.getOfferId(), e);
+        offers.put(e.getOfferId(), e);
         return true;
     }
 
@@ -113,13 +107,15 @@ public class OfferManager extends TextDatabase {
     //Crear promoción
     public Offer createObject(MenuNode[] enode) {
         MenuNode node = enode[0];
-           //Introduzca un identificador para la promocion
+        //Introduzca un identificador para la promocion
         //introduzca el texto de la promocion
         ArrayList<String> nodesData = node.convertTreeChildToListIdxFrom(0);
 
-        Offer offer  = new Offer(nodesData.get(0),nodesData.get(1));
-        
-     
+        Offer offer = new Offer(nodesData.get(0), nodesData.get(1));
+
+        offers.put(offer.getOfferId(), offer);
+
+        save(offers);
         return offer;
     }
 
@@ -132,9 +128,9 @@ public class OfferManager extends TextDatabase {
      */
     public Offer searchOffer(String e) {
 
-        if (Offers.containsKey(e)) {
+        if (offers.containsKey(e)) {
             //Si encontramos el elemento en la búsqueda devolvemos el elemento
-            return Offers.get(e);
+            return offers.get(e);
         }
         return null;
 
@@ -144,14 +140,111 @@ public class OfferManager extends TextDatabase {
         return salesMan;
     }
 
+    /**
+     * Lista los clientes de una promo
+     *
+     * @param PromoCode
+     */
     public void listClient(String PromoCode) {
-        Offer offer = searchOffer(PromoCode);
 
-        offer.printClients();
+        Offer offer = searchOffer(PromoCode);
+        if (offer != null) {
+            offer.printClients();
+        }
 
     }
 
+    /**
+     * Busca a partir de la información capturada en un nodo
+     *
+     * @param enode
+     */
+    private void listClient(MenuNode[] enode) {
+        MenuNode node = enode[0];
+        ArrayList<String> nodesData = node.convertTreeChildToListIdxFrom(0);
+
+        listClient(nodesData.get(0));
+    }
+
+    /**
+     *
+     *
+     * Establece el operador de la operación
+     *
+     * @param salesMan
+     */
     public void setSalesMan(SalesMan salesMan) {
         this.salesMan = salesMan;
     }
+
+    /**
+     * Carga la coleccion
+     */
+    public void load() {
+        offers = super.load("Offer");
+
+    }
+
+    /**
+     * Privado. Agrega cliente a promo a partir de nodo
+     *
+     *
+     */
+    private void addClientToPromo(MenuNode[] enode) {
+        MenuNode node = enode[0];
+
+        ArrayList<String> nodesData = node.convertTreeChildToListIdxFrom(0);
+
+        addClientToPromo(nodesData.get(0), nodesData.get(1));
+
+    }
+
+    /**
+     * Publico. Agrega cliente a promo a partir String
+     *
+     *
+     * @param codPromo
+     * @param clientId
+     * @return boolean
+     */
+    public boolean addClientToPromo(String codPromo, String clientId) {
+        Offer offer = offers.get(codPromo);
+        if (offer == null) {
+            System.out.println("La promoción no existe");
+            return false;
+
+        }
+
+        Client client = (Client) clientManager.searchPerson(clientId);
+        if (client == null) {
+            System.out.println("El cliente no existe");
+            return false;
+        }
+
+        offer.addClient(client.getDni(), client);
+        save(offers);
+        System.out.println("Cliente agregado");
+        return true;
+    }
+
+    private boolean sendMail(String operCode) {
+        Offer offer = searchOffer(operCode);
+        if (offer != null) {
+            offer.sendMail();
+            return true;
+        }
+        System.out.println("La promoción no existe");
+        return false;
+
+    }
+
+    public void sendMail(MenuNode[] enode) {
+
+        MenuNode node = enode[0];
+
+        ArrayList<String> nodesData = node.convertTreeChildToListIdxFrom(0);
+        sendMail(nodesData.get(0));
+
+    }
+
 }
