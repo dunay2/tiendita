@@ -26,7 +26,8 @@ public class SaleManager extends OperationsManager {
     private String invoiceCounter = "INVOICE ".concat(String.valueOf(size()));
     private static SaleManager instance = null;    //Singleton  Pattern
 
-    /**Singleton Pattern
+    /**
+     * Singleton Pattern
      *
      * @param clientManager
      * @param stockManager
@@ -105,24 +106,27 @@ public class SaleManager extends OperationsManager {
         return new Sale(getInvoiceNumber(), client.getDni(), employee.getDni(), shoppingCart, "A");
 
     }
-/**
- * 
- */
+
+    /**
+     *
+     */
     private void setInvoiceNumber() {
         invoiceCounter = "INV0000".concat(String.valueOf(size()));
     }
-/**
- * 
- * @return 
- */
+
+    /**
+     *
+     * @return
+     */
     private String getInvoiceNumber() {
         return invoiceCounter;
     }
-/**
- * 
- * @param enode
- * @return 
- */
+
+    /**
+     *
+     * @param enode
+     * @return
+     */
     @Override
     public boolean handleProcess(MenuNode[] enode) {
         MenuNode node = enode[0];
@@ -317,6 +321,9 @@ public class SaleManager extends OperationsManager {
 
     }
 
+    /**
+     * Vaciar el carrito
+     */
     private void clearShoppingCart() {
         for (byte i = 0; i < shoppingCart.getItems().size(); i++) {
             shoppingCart.removeItem(i);
@@ -324,11 +331,21 @@ public class SaleManager extends OperationsManager {
 
     }
 
+    /**
+     * Obtener el precio total de los productos en el carrito
+     *
+     * @return
+     */
     private double getTotalAmount() {
 
         return shoppingCart.getTotalAmount();
     }
 
+    /**
+     *
+     *
+     * Agregar items al carrito
+     */
     private void addItem(MenuNode node) {
 
         int i = 0; //variable de control de nodos de lectura
@@ -660,20 +677,6 @@ public class SaleManager extends OperationsManager {
 
         //supera los 3 meses
         return (((fechaFinal.getTime() - fechaInicial.getTime()) / 86400000) <= 90);
-
-    }
-
-    private static String getInvoiceRef(String code) {
-
-        String[] parts = code.split("-");
-        return parts[0];
-
-    }
-
-    private static String getItemRef(String code) {
-
-        String[] parts = code.split("-");
-        return parts[1];
 
     }
 

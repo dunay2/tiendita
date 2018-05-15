@@ -231,6 +231,9 @@ public class OfferManager extends TextDatabase {
         Offer offer = searchOffer(operCode);
         if (offer != null) {
             offer.sendMail();
+
+            save(offers);
+
             return true;
         }
         System.out.println("La promoción no existe");

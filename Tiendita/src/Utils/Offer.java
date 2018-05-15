@@ -2,12 +2,10 @@ package Utils;
 
 import Person.Client.Client;
 import Person.Comunications.ICommunication;
-import Person.Person;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  *
@@ -72,8 +70,7 @@ public class Offer implements ICommunication, Serializable {
     @Override
     public void sendMail() {
 
-        hmClients.forEach((code, client) -> {
-            System.out.println("Código: " + code + " Descripción: " + client.getFirstName());
+        hmClients.forEach((String code, Client client) -> {
             sendMail(client);
         });
 
@@ -92,11 +89,14 @@ public class Offer implements ICommunication, Serializable {
         if (checkSendMailConditions(client.getSendDate())) {
             System.out.println("Correo enviado a " + client.getEmail());
 
-            System.out.println("Estimado/a Señor/a " + client.getLastName() + offerDesc);
+            System.out.println("Estimado/a Señor/a " + client.getLastName() + " " + offerDesc);
 
             //Guardamos la fecha de envío
             Calendar rightNow = Calendar.getInstance();
             client.setSendDate(rightNow.getTime());
+
+        } else {
+            System.out.println("El cliente " + client.getFirstName() + " ya ha recibido la promocion");
         }
 
     }
@@ -112,6 +112,9 @@ public class Offer implements ICommunication, Serializable {
      */
     private boolean checkSendMailConditions(Date date) {
 
+        if (date == null) {
+            return true;
+        }
         Calendar rightNow = Calendar.getInstance();
 
         Date fechaFinal = rightNow.getTime();
