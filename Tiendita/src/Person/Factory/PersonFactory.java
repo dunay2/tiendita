@@ -10,6 +10,7 @@ import Person.Employee.Cashier;
 import Person.Employee.Clerk;
 import Person.Employee.Engineer;
 import Person.Employee.FAssintance;
+import Person.Employee.SalesMan;
 import Person.Person;
 
 /**
@@ -36,6 +37,9 @@ public class PersonFactory {
                 return new Engineer(dni);
             case 6:
                 return new FAssintance(dni);
+
+            case 7:
+                return new SalesMan(dni);
         }
         return null;
     }

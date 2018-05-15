@@ -10,6 +10,7 @@ import ScreenInterfaces.TextInterface;
 import Utils.Menu.MenuNode;
 import Item.Electrodomestic;
 import Item.Factory.ItemFactory;
+import Samples.AddTest;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -127,7 +128,7 @@ public class StockManager extends TemplateManager {
                 return true;
             //Agregar items de prueba
             case 35:
-               // AddTest.addTestComponents();
+                AddTest.addTestComponents();
 
                 return true;
             case 36://Buscar producto
