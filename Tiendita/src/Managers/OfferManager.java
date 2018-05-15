@@ -6,6 +6,7 @@ import Person.Employee.SalesMan;
 import ScreenInterfaces.TextInterface;
 import Utils.Menu.MenuNode;
 import Utils.Offer;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -44,7 +45,7 @@ public class OfferManager extends TextDatabase {
         StringBuilder outString = new StringBuilder();
 
         switch (node.getValue()) {
-            case 71:    //entries.add(new MenuStruct("mnuCreatePromo", "Crear una promocion  "));
+            case 71:    //Crear una promocion 
                 //Codigo promo
                 //desc
 
@@ -110,11 +111,16 @@ public class OfferManager extends TextDatabase {
     }
 
     //Crear promoción
-    public Offer createObject(MenuNode[] node) {
-        return null;
-
-        //Introduzca un identificador para la promocion
+    public Offer createObject(MenuNode[] enode) {
+        MenuNode node = enode[0];
+           //Introduzca un identificador para la promocion
         //introduzca el texto de la promocion
+        ArrayList<String> nodesData = node.convertTreeChildToListIdxFrom(0);
+
+        Offer offer  = new Offer(nodesData.get(0),nodesData.get(1));
+        
+     
+        return offer;
     }
 
     /**

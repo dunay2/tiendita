@@ -39,8 +39,12 @@ public class Offer implements ICommunication {
 
     }
 
-    public Offer(int offerId, String offerDesc) {
+    public Offer(String offerId, String offerDesc) {
         this.hmClients = new HashMap();
+        
+        this.offerId= offerId;
+        this.offerDesc= offerDesc;
+        
     }
 
     /**

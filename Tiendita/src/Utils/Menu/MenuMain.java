@@ -76,7 +76,7 @@ public class MenuMain extends MenuBase {
         entries.clear();
 
         MenuOffer.createPromoEntries("mnuCreatePromo").forEach(menu -> entries.add(menu));
-        convertToChildNode("mnuListPromoCli", entries);
+        convertToChildNode("mnuCreatePromo", entries);
         entries.clear();
 
         //Propósito: Listar promo
