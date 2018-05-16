@@ -4,6 +4,8 @@ import Utils.Menu.MenuMain;
 import Utils.Menu.MenuNode;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -91,10 +93,11 @@ public class TextInterface {
     }
 
     /**
-     * Propósito: Accesos los menús Muestra las opciones disponibles de menú en
-     * la selección actual mediante la impresión del menú de hijos Gestiona la
-     * entrada de menú que ha sido seleccionada Devuelve el nodo de menú
-     * seleccionado
+     * Propósito: Acceso a los menús.
+     * Muestra las opciones disponibles de menú en
+     * la selección actual mediante la impresión del menú de hijos
+     * Gestiona la entrada de menú que ha sido seleccionada 
+     * Devuelve el nodo de menú seleccionado
      *
      * @param node
      * @return
@@ -102,8 +105,14 @@ public class TextInterface {
     private MenuNode getMenu(MenuNode node) {
         //Imprimimos el menú
 
+   System.out.print("\033[H\033[2J");  
+    System.out.flush();  
+        
+    
         System.out.println("******************************************");
+        System.out.println("");
         printChildNodes(node);
+        System.out.println("");
         System.out.println("******************************************");
         int i;
         i = readConsole();

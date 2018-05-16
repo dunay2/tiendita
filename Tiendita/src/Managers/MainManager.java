@@ -202,6 +202,17 @@ public class MainManager {
 
         //Se pide un dato al usuario
         MenuNode node = new MenuNode(null, 0, "auth", "Por favor introduzca codigo de usuario para autenticarse. Si es la primera vez que ejecuta la aplicación pulse return", null);
+        
+System.out.println("===================Default Profiles Codes=================");
+        System.out.println("Cajero --> 1");
+        System.out.println("Gestión de Clientes --> 2");
+        System.out.println("Gestor de Stock --> 3"  );
+        System.out.println("Gestión Empleados --> 4");
+        System.out.println("Gestión de Reparaciones --> 5");
+        System.out.println("Gestión de Créditos --> 6");
+        System.out.println("Gestión de Promociones --> 7");
+        System.out.println("====================================");
+        
         node.addNode(node);
 
 //agregar un  nodo hijo de respuesta
