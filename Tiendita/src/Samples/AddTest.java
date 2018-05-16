@@ -282,39 +282,44 @@ public class AddTest {
 //un historial de cada técnico y cada electrodoméstico.
     }
 
-    //public static void testChangeOrderStatus(Repair repair, String newStatus) {
-//    public static void testChangeOrderStatus() {
-//        Repair repair = new Repair("testo1", "cli", "emp","inv1");
-//        //Estados 
-//        // A--> FACTURA ACTIVA
-//        // I--> FACTURA INACTIVA
-//        // R--> EN REPARACION
-//        // P--> PENDIENTE
-//        // S--> PARADO
-//        // T--> TEST
-//        // F--> FINISH
-//
-//        repair.setStatus("A");
-//        repair.addHistory("registro creado");
-//
-//        repair.setStatus("I");
-//        repair.addHistory("registro inactivo");
-//
-//        //R APERTURA DE PARTE
-//        repair.setStatus("R");
-//        repair.addHistory("APERTURA DE PARTE");
-//
-//        repair.setStatus("P");
-//        repair.addHistory("pendiente de piezas");
-//        repair.setStatus("S");
-//        repair.addHistory("esperando confirmacion de cliente");
-//        repair.setStatus("T");
-//        repair.addHistory("Probando el articulo");
-//        repair.setStatus("F");
-//        repair.addHistory("producto entregado al cliente");
-//
-//        repairManager.add(repair);
-//    }
+    
+
+    public static void testChangeOrderStatus() {
+        
+         //public Repair(String operCode, String cliCode, String empCode, String invoiceRef, String itemRef)
+    
+        Repair repair = new Repair("REPAR01", "1", "1", "INV1","M330" );
+        //Estados 
+        // A--> FACTURA ACTIVA
+        // I--> FACTURA INACTIVA
+        // R--> EN REPARACION
+        // P--> PENDIENTE
+        // S--> PARADO
+        // T--> TEST
+        // F--> FINISH
+
+        repair.setStatus("A");
+        repair.addHistory("registro creado");
+
+        repair.setStatus("I");
+        repair.addHistory("registro inactivo");
+
+        //R APERTURA DE PARTE
+        repair.setStatus("R");
+        repair.addHistory("APERTURA DE PARTE. El ratón falla");
+
+        repair.setStatus("P");
+        repair.addHistory("pendiente de piezas");
+        repair.setStatus("S");
+        repair.addHistory("esperando confirmacion de cliente");
+        repair.setStatus("T");
+        repair.addHistory("Probando el articulo");
+        repair.setStatus("F");
+        repair.addHistory("producto entregado al cliente");
+
+        repairManager.add(repair);
+    }
+
     public static void testRepair() {
 
         System.out.println("****Agregando Reparacion de prueba");
@@ -368,11 +373,6 @@ public class AddTest {
 //        repairManager.save();
 //        clientManager.save();
 
-        //  entries.add(new MenuStruct("mnuOpenPart", "Abrir un parte de reparaciones"));
-//        entries.add(new MenuStruct("mnuRepairSearch", "Gestionar una reparacion"));
-////        entries.add(new MenuStruct("mnuRepairInsertItem", "Dar entrada producto"));
-//        entries.add(new MenuStruct("mnuChekcInvoiceItem", "Buscar referencias por factura"));
-//        entries.add(new MenuStruct("", "Listar reparaciones")); //indicando quién las tiene
     }
 
 //Menu listar referencias de factura

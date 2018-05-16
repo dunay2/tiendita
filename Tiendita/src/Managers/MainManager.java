@@ -6,6 +6,7 @@ package Managers;
 import Person.Employee.Clerk;
 import Person.Employee.Employee;
 import Person.Employee.SalesMan;
+import Samples.AddTest;
 import ScreenInterfaces.TextInterface;
 import Utils.Menu.MenuNode;
 
@@ -89,7 +90,7 @@ public class MainManager {
     }
 
     /**
-     * Propósito: Comprobar que se tiene permiso para acceder a los menús 
+     * Propósito: Comprobar que se tiene permiso para acceder a los menús
      *
      *
      * @param value
@@ -216,6 +217,7 @@ public class MainManager {
 
             employeeManager.add(activeEmployee);
             System.out.println("Creado usuario administrador. Acceso a RRHH NIF: admin");
+            loadTestData();
             employeeManager.save();
 
         } else {//No hemos encontrado el usuario. Volvemos a pedir datos
@@ -234,4 +236,15 @@ public class MainManager {
 
         return true;
     }
+
+    private void loadTestData() {
+
+        AddTest.addTestEmployees();
+        AddTest.addTestComponents();
+        AddTest.addTestSale();
+        AddTest.testRepair();
+        AddTest.testChangeOrderStatus();
+        AddTest.printOrders("");
+    }
+
 }

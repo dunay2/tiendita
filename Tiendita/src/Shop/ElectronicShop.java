@@ -16,15 +16,9 @@ public class ElectronicShop extends Shop {
      */
     public static void main(String[] args) {
 
-        AddTest.addTestEmployees();
-        AddTest.addTestComponents();
-          AddTest.addTestSale();
-        // AddTest.testRepair();
-        //  AddTest.testChangeOrderStatus();
-        // AddTest.printOrders("");
+     
         MainManager scene = new MainManager();
 
-        //  scene.start();
     }
 
 }
