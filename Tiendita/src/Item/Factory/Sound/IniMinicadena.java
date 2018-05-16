@@ -1,26 +1,23 @@
+package Item.Factory.Sound;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Item.Factory.Home;
-
-import Item.Family.Home.DishWasher;
+import Item.Components.Sound;
 import java.util.ArrayList;
 
 /**
  *
  * @author ashh412
  */
-public class IniDishWasher extends DishWasher {
+public class IniMinicadena extends Sound {
+
+    private static final long serialVersionUID = -2873344211410398459L;
 
     /**
+     * Define la inicialización de un objeto de tipo
      *
      * @param key
      * @param response
      */
-    public IniDishWasher(String key, ArrayList<String> response) {
+    public IniMinicadena(String key, ArrayList<String> response) {
 
         super(key);
         int i = 0;
@@ -28,16 +25,8 @@ public class IniDishWasher extends DishWasher {
         super.setName(response.get(i++));
         super.setBrand(response.get(i++));
         super.setDescription(response.get(i++));
-        super.setWidth(Integer.valueOf(response.get(i++)));
-        super.setHeigth(Integer.valueOf(response.get(i++)));
-        super.setDepth(Integer.valueOf(response.get(i++)));
-        super.setPower(response.get(i++));
-        super.setEnergyCertification(response.get(i++));
-
-        super.setWaterConsume(response.get(i++));
-
         super.setGuaranty(response.get(i++));
-try {
+        try {
             super.setBoughtPrice(Double.valueOf(response.get(i++)));
 
         } catch (NumberFormatException e) {
@@ -57,5 +46,6 @@ try {
         } catch (NumberFormatException e) {
             super.setQuantity(0);
         }
+
     }
 }

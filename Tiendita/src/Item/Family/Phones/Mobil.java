@@ -3,12 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package item.family.phones;
+package Item.Family.Phones;
+
+import Item.Electrodomestic;
 
 /**
  *
  * @author ashh412
  */
-public class Mobil {
+public class Mobil extends Electrodomestic{
+        private static final long serialVersionUID = -2873344211410398459L;
+    /**
+     *
+     * @param code
+     */
+    public Mobil(String code) {
+        super(code);
+    }
     
 }

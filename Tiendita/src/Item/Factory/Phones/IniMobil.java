@@ -1,26 +1,27 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Item.Factory.Home;
+package Item.Factory.Phones;
 
-import Item.Family.Home.DishWasher;
+
+
+import Item.Family.Phones.Mobil;
 import java.util.ArrayList;
-
+import static java.lang.Integer.parseInt;
 /**
  *
  * @author ashh412
  */
-public class IniDishWasher extends DishWasher {
-
-    /**
+public class IniMobil extends Mobil {
+  private static final long serialVersionUID = -2873344211410398459L;
+     /** Define la inicialización de un objeto de tipo
      *
      * @param key
      * @param response
      */
-    public IniDishWasher(String key, ArrayList<String> response) {
+    public IniMobil(String key, ArrayList<String> response) {
 
         super(key);
         int i = 0;
@@ -28,14 +29,6 @@ public class IniDishWasher extends DishWasher {
         super.setName(response.get(i++));
         super.setBrand(response.get(i++));
         super.setDescription(response.get(i++));
-        super.setWidth(Integer.valueOf(response.get(i++)));
-        super.setHeigth(Integer.valueOf(response.get(i++)));
-        super.setDepth(Integer.valueOf(response.get(i++)));
-        super.setPower(response.get(i++));
-        super.setEnergyCertification(response.get(i++));
-
-        super.setWaterConsume(response.get(i++));
-
         super.setGuaranty(response.get(i++));
 try {
             super.setBoughtPrice(Double.valueOf(response.get(i++)));

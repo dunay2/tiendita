@@ -101,12 +101,26 @@ public class TextInterface {
      */
     private MenuNode getMenu(MenuNode node) {
         //Imprimimos el menú
+
+        System.out.println("******************************************");
         printChildNodes(node);
+        System.out.println("******************************************");
         int i;
         i = readConsole();
         if (i > 0) {
+
             //Tomamos el hijo seleccionado
-            MenuNode childNode = node.getChildNodes().get(i - 1);
+            MenuNode childNode = null;
+
+            try {
+                childNode = node.getChildNodes().get(i - 1);
+
+            } catch (Exception e) {
+
+                System.out.println("Introduzca una opción válida");
+                return node;
+
+            }
 
             //Ejecutamos una función en el sistema dependiendo
             //de la entra de teclado

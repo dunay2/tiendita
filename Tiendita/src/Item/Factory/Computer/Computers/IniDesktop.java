@@ -35,9 +35,26 @@ public class IniDesktop extends Desktop {
         super.setRam(response.get(i++));
         super.setHddSize(response.get(i++));
         super.setGuaranty(response.get(i++));
-        super.setBoughtPrice(Double.valueOf(response.get(i++)));
-        super.setSellPrice(Double.valueOf(response.get(i++)));
-        super.setQuantity(Integer.valueOf(response.get(i++)));
+ try {
+            super.setBoughtPrice(Double.valueOf(response.get(i++)));
+
+        } catch (NumberFormatException e) {
+            super.setBoughtPrice(0);
+        }
+
+        try {
+            super.setSellPrice(Double.valueOf(response.get(i++)));
+
+        } catch (NumberFormatException e) {
+            super.setSellPrice(0);
+        }
+
+        try {
+            super.setQuantity(Integer.valueOf(response.get(i++)));
+
+        } catch (NumberFormatException e) {
+            super.setQuantity(0);
+        }
 
     }
 

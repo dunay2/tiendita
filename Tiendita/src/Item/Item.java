@@ -24,15 +24,19 @@ public abstract class Item implements Serializable {
     private String color;
     private String weith;
     private String guaranty;
-    private  String brand; 
+    private String brand;
 
     public Item(String code, String familyCode, String name, String description, double boughtPrice, double sellPrice, int quantity) {
         this.familyCode = familyCode;
         this.code = code;
         this.name = name;
+
         this.description = description;
+
         this.boughtPrice = boughtPrice;
+
         this.sellPrice = sellPrice;
+
         this.quantity = quantity;
 
     }
@@ -45,7 +49,6 @@ public abstract class Item implements Serializable {
         this.brand = brand;
     }
 
-    
     public String getFamilyCode() {
         return familyCode;
     }
@@ -66,8 +69,6 @@ public abstract class Item implements Serializable {
         this.code = code;
     }
 
-    
-    
     public int getQuantity() {
         return quantity;
     }
@@ -139,6 +140,5 @@ public abstract class Item implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
 
 }

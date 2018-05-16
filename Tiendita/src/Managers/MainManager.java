@@ -33,7 +33,7 @@ public class MainManager {
     private static final int MAXACCESS = 3; //Valor que controla los intentos máximos de login
 
     /**
-     *
+     * Gestor principal que controal la aplicación
      */
     public MainManager() {
 
@@ -54,7 +54,7 @@ public class MainManager {
         this.saleManager = SaleManager.getInstance(clientManager, stockManager);
 
         if (role.equals("Cashier")) {
-            //  saleManager.setCashier((Cashier) activeEmployee);
+
             saleManager.setEmployee(activeEmployee);
         }
         this.clientManager.setSaleManager(this.saleManager);
@@ -88,10 +88,15 @@ public class MainManager {
 
     }
 
-//Propósito: Comprobar que se tiene permiso para acceder a los menús
+    /**
+     * Propósito: Comprobar que se tiene permiso para acceder a los menús 
+     *
+     *
+     * @param value
+     * @return
+     */
     private boolean checkRole(int value) {
 
-        System.out.println(role);
         String sNumero = String.valueOf(value);
 
         int offset = Double.valueOf(Math.pow(10, sNumero.length() - 1)).intValue();
@@ -111,12 +116,10 @@ public class MainManager {
                 || fnum == 5 && role.equals("Engineer")
                 //Gestion de créditos
                 || fnum == 6 && role.equals("FAssintance")
-                //Promciones
+                //Promociones
                 || fnum == 7 && role.equals("SalesMan");
 
-//        return true;
     }
-///////////!!!!!!!!!!!!!!!!!!si no hay usuarios se crea un administrador!!!!!!!!!!!!!!!!
 
     /**
      * Propósito: Hacer de listener y handler de las peticiones
@@ -130,7 +133,7 @@ public class MainManager {
 //a los gestores para pasar por referencia el objeto nodo y 
 //de esta forma poder antender sus peticiones 
         MenuNode[] node = {enode};
-        System.out.println("entrada menu" + enode.getValue());
+
         if (enode.getValue() == 8) {
             System.out.println("Gracias por usar la aplicación");
             System.exit(0);
@@ -156,16 +159,12 @@ public class MainManager {
             startNewSequence = true;
         }
 
-        if (checkRole(enode.getValue())) {
-            if (financeManager.handleProcess(node) && !startNewSequence) {
-                startNewSequence = true;
-            }
+        if (financeManager.handleProcess(node) && !startNewSequence) {
+            startNewSequence = true;
         }
 
-        if (checkRole(enode.getValue())) {
-            if (offerManager.handleProcess(node) && !startNewSequence) {
-                startNewSequence = true;
-            }
+        if (offerManager.handleProcess(node) && !startNewSequence) {
+            startNewSequence = true;
         }
 
         TextInterface.clearScreen();
@@ -185,7 +184,8 @@ public class MainManager {
     }
 
     /**
-     * Controla accesos de cliente configurados en MAXACCESS
+     * Controla accesos de cliente configurados en MAXACCESS Si no existe ningún
+     * usuario se crea el usuario admin
      *
      * @return
      */
@@ -230,8 +230,8 @@ public class MainManager {
         }
 
         role = activeEmployee.getClass().getSimpleName();
-        System.out.println("Bienvenido ".concat(activeEmployee.getFirstName()));
-        System.out.println("Su role es ".concat(role));
+        System.out.println("Bienvenido ".concat(activeEmployee.getFirstName()).concat(". Su role es ".concat(role)));
+
         return true;
     }
 }

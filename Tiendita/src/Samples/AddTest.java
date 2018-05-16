@@ -88,9 +88,7 @@ public class AddTest {
             employeeManager.save();
         }
     }
-    
-    
-        
+
     public static void addTestComponents() {
 
         stockManager = StockManager.getInstance();
@@ -115,6 +113,17 @@ public class AddTest {
         e.setSellPrice(57.99); // precio de venta
         e.setQuantity(12); // stock
         stockManager.add(e);
+
+        Memory me = new Memory("N71VN");//Código artículoº
+        me.setName("Memoria"); //Nombre
+        me.setBrand("ASUS"); //Marca
+        me.setDescription("N71VN DDR3 2GB"); //descripción
+        me.setGuaranty("2 años"); //Garantía
+        me.setBoughtPrice(9.07); // precio de compra
+        me.setSellPrice(17.51); // precio de venta
+        me.setCapacity("2GB");
+        me.setQuantity(5); // stock
+        stockManager.add(me);
 
         e = new Mouse("M330");//Código artículo
         e.setName("Ratón"); //Nombre
@@ -159,16 +168,17 @@ public class AddTest {
         pr.setQuantity(5); // stock
         stockManager.add(pr);
 
-        Memory me = new Memory("N71VN");//Código artículoº
-        me.setName("Memoria"); //Nombre
-        me.setBrand("ASUS"); //Marca
-        me.setDescription("N71VN DDR3 2GB"); //descripción
-        me.setGuaranty("2 años"); //Garantía
-        me.setBoughtPrice(9.07); // precio de compra
-        me.setSellPrice(17.51); // precio de venta
-        me.setCapacity("2GB");
-        me.setQuantity(5); // stock
-        stockManager.add(me);
+        pr = new Printer("965EE");//Código artículo
+        pr.setName("Procesador"); //Nombre
+        pr.setBrand("Intel"); //Marca
+        pr.setDescription("965 Extreme Edition"); //descripción
+        pr.setGuaranty("2 años"); //Garantía
+        pr.setBoughtPrice(250.23); // precio de compra
+        pr.setSellPrice(499.90); // precio de venta
+
+        pr.setQuantity(3); // stock
+
+        stockManager.add(pr);
 
         stockManager.save(stockManager.getAll());
 

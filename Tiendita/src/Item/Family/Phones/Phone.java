@@ -1,13 +1,23 @@
-package item.family.phones;
+package Item.Family.Phones;
 
-import Item.Family.Computers.Computer;
+import Item.Electrodomestic;
 
-public class Phone  extends Computer
-{
 
+
+/**
+ *
+ * @author ashh412
+ */
+public class Phone extends Electrodomestic {
+
+    private static final long serialVersionUID = -2873344211410398459L;
+
+    /**
+     *
+     * @param code
+     */
     public Phone(String code) {
         super(code);
     }
-
 
 }
