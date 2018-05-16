@@ -78,11 +78,15 @@ public class MainManager {
             this.offerManager.setSalesMan((SalesMan) activeEmployee);
         }
 
+        clientManager.load();
         stockManager.load();
         saleManager.load();
         repairManager.load();
         financeManager.load();
         offerManager.load();
+        
+        
+        
 
         //  this.saleManager = new SaleManager(cashier, clientManager, stockManager);
         doBusiness(myTextInterface.printMenu(null));

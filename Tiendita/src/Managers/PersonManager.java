@@ -182,7 +182,7 @@ public abstract class PersonManager extends TextDatabase implements Imanager<Per
     }
 
     private void printHeader() {
-        System.out.printf("%-15s%-20s%-20s%-20s%-20s%-20s%-10s%-10s%n", "ROL", "DNI", "APELLIDOS", "NOMBRE", "DIRECCION", "TELEFONO", "NOMINA", "ACTIVO");
+        System.out.printf("%-15s%-20s%-20s%-20s%-20s%-20s%-10s%-10s%n", "ROL", "DNI", "APELLIDOS", "NOMBRE", "DIRECCION", "EMAIL", "NOMINA", "ACTIVO");
 
     }
 
@@ -205,7 +205,7 @@ public abstract class PersonManager extends TextDatabase implements Imanager<Per
 //Guardamos el nombre de la clase hija
         String Rol = objectType.getClass().getSimpleName();
 
-        System.out.printf("%-15s%-20s%-20s%-20s%-20s%-20s%-10s%-10s%n", Rol, person.getDni(), person.getLastName(), person.getFirstName(), person.getAddress(), person.getPhone(), person.getSalary(), person.isActive());
+        System.out.printf("%-15s%-20s%-20s%-20s%-20s%-20s%-10s%-10s%n", Rol, person.getDni(), person.getLastName(), person.getFirstName(), person.getAddress(), person.getEmail(), person.getSalary(), person.isActive());
 
     }
 
@@ -261,9 +261,9 @@ public abstract class PersonManager extends TextDatabase implements Imanager<Per
             key = nodeAux.getResponseValue();
         }
         //Tomamos la entrada de datos para la persona que vamos a crear
-       // nodesData = node.convertTreeChildToListIdx();
-        
-     nodesData=   node.convertTreeChildToListIdxFrom(1);
+        // nodesData = node.convertTreeChildToListIdx();
+
+        nodesData = node.convertTreeChildToListIdxFrom(1);
 
         node.getChildNodes().get(0).clearResponse();
 
